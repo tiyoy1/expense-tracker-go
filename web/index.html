@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sisa Uang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+    <div class="passbook">
+        <h1 class="passbook-title">Sisa Uang</h1>
+        <p class="passbook-subtitle">Catatan keuangan harianmu</p>
+
+        <form id="login-form">
+            <div class="field">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div class="field">
+                <label for="login-password">Kata sandi</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit">Masuk</button>
+            <p id="login-error" class="error"></p>
+        </form>
+
+        <div class="auth-divider">Belum punya akun</div>
+
+        <form id="register-form">
+            <div class="field">
+                <label for="register-name">Nama</label>
+                <input type="text" id="register-name" required>
+            </div>
+            <div class="field">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" required>
+            </div>
+            <div class="field">
+                <label for="register-password">Kata sandi</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <button type="submit" class="btn-ghost">Buat akun</button>
+            <p id="register-error" class="error"></p>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

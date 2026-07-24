@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sisa Uang — Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-page">
+        <div class="ledger-header">
+            <span class="wordmark">Sisa Uang</span>
+            <button id="logout-btn" class="logout">Keluar</button>
+        </div>
+
+        <div class="book">
+            <div class="page page-left">
+                <div class="hero">
+                    <p class="eyebrow">Aman dibelanjakan hari ini</p>
+                    <p id="daily-safe-spend" class="hero-value">-</p>
+                    <span id="date-stamp" class="stamp"></span>
+                </div>
+
+                <div class="section">
+                    <p class="section-label">Bulan ini</p>
+                    <div class="ledger-row">
+                        <span>Pemasukan</span>
+                        <span id="total-income" class="amount">-</span>
+                    </div>
+                    <div class="ledger-row">
+                        <span>Pengeluaran</span>
+                        <span id="total-expense" class="amount">-</span>
+                    </div>
+                    <div class="ledger-row">
+                        <span>Sisa</span>
+                        <span id="remaining-balance" class="amount">-</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <p class="section-label">Anggaran bulanan</p>
+                    <form id="budget-form" class="budget-row">
+                        <input type="number" id="budget-amount" placeholder="Contoh: 1500000" required>
+                        <button type="submit">Simpan</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="page page-right">
+                <div class="section">
+                    <p class="section-label">Catat transaksi baru</p>
+                    <form id="transaction-form" class="tx-form">
+                        <select id="tx-type" required>
+                            <option value="expense">Pengeluaran</option>
+                            <option value="income">Pemasukan</option>
+                        </select>
+                        <input type="number" id="tx-amount" placeholder="Jumlah" required>
+                        <input type="text" id="tx-description" placeholder="Keterangan" class="full">
+                        <select id="tx-category">
+                            <option value="">Tanpa kategori</option>
+                        </select>
+                        <input type="date" id="tx-date" required>
+                        <button type="submit" class="full">+ Catat</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <p class="section-label">Riwayat</p>
+                    <ul id="transaction-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
