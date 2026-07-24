@@ -21,8 +21,8 @@ func Connect() {
 	password := os.Getenv("MYSQLPASSWORD") // empty string is a valid local default
 	database := getEnvOrDefault("MYSQLDATABASE", "expense_tracker_go")
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", user, password, host, port, database)
-
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?tls=preferred", user, password, host, port, database)
+	
 	var err error
 	DB, err = sql.Open("mysql", dsn)
 	if err != nil {
