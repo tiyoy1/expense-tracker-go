@@ -43,6 +43,13 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		dailySafeSpend = (budget - expense) / float64(daysRemaining)
 	}
 
+	daysElapsed := now.Day()
+	var predictedMonthTotal float64
+	if daysElapsed > 0 {
+		predictedMonthTotal = (expense / float64(daysElapsed)) * float64(lastDayOfMonth)
+	}
+	overspendingWarning := budget > 0 && predictedMonthTotal > budget
+
 	summary := models.DashboardSummary{
 		TotalIncome: income,
 		TotalExpense: expense,
@@ -50,6 +57,8 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		Budget: budget,
 		DailySafeSpend: dailySafeSpend,
 		DaysRemaining: daysRemaining,
+		PredictedMonthTotal: predictedMonthTotal,
+		OverspendingWarning: overspendingWarning,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

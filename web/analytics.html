@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sisa Uang — Analitik</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+    <div class="dashboard-page">
+        <div class="ledger-header">
+            <span class="wordmark">Sisa Uang</span>
+            <div class="header-actions">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <button id="logout-btn" class="logout">Keluar</button>
+            </div>
+        </div>
+
+        <p id="analytics-status" class="tx-status"></p>
+
+        <div class="section">
+            <p class="section-label">Ringkasan bulan ini</p>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <span class="label">Pemasukan</span>
+                    <span id="summary-income" class="value">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Pengeluaran</span>
+                    <span id="summary-expense" class="value">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Kategori terbesar</span>
+                    <span id="summary-top-category" class="value">-</span>
+                </div>
+                <div class="summary-card">
+                    <span class="label">Vs bulan lalu</span>
+                    <span id="summary-vs-last-month" class="value">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <p class="section-label">Pengeluaran per kategori</p>
+            <div class="chart-wrap"><canvas id="category-chart"></canvas></div>
+        </div>
+
+        <div class="section">
+            <p class="section-label">Tren 6 bulan terakhir</p>
+            <div class="chart-wrap"><canvas id="trend-chart"></canvas></div>
+        </div>
+    </div>
+
+    <script src="analytics.js"></script>
+</body>
+</html>

@@ -182,6 +182,15 @@ if (dashboardEl) {
                 label.textContent = "Anggaran belum diatur";
             }
 
+            const warningBanner = document.getElementById("overspend-warning");
+if (data.overspending_warning) {
+    document.getElementById("overspend-warning-text").textContent =
+        `Diperkirakan pengeluaranmu bulan ini mencapai ${formatRupiah(data.predicted_month_total)}, melebihi anggaran ${formatRupiah(data.budget)}.`;
+    warningBanner.classList.remove("hidden");
+} else {
+    warningBanner.classList.add("hidden");
+}
+
             statusEl.classList.add("hidden");
         } catch (err) {
             statusEl.innerHTML = `Gagal memuat dashboard. <button id="dashboard-retry-btn" class="retry-btn">Coba lagi</button>`;

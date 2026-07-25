@@ -456,3 +456,61 @@ input, select, button {
   color: inherit;
   cursor: pointer;
 }
+
+.header-actions { display: flex; gap: 8px; align-items: center; }
+.nav-link {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.nav-link:hover { border-color: var(--ink); color: var(--ink); }
+
+.warning-banner {
+  background: var(--paper-raised);
+  border: 1px solid var(--rose);
+  border-left: 4px solid var(--rose);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  color: var(--rose);
+}
+
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.summary-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.summary-card .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.summary-card .value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.summary-card .value.tight { color: var(--rose); }
+.summary-card .value.healthy { color: var(--teal); }
+
+.chart-wrap {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 16px;
+  height: 260px;
+}
+
+@media (min-width: 600px) {
+  .summary-grid { grid-template-columns: repeat(4, 1fr); }
+}

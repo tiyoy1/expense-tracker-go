@@ -11,9 +11,16 @@
 
     <div class="dashboard-page">
         <div class="ledger-header">
-            <span class="wordmark">Sisa Uang</span>
-            <button id="logout-btn" class="logout">Keluar</button>
-        </div>
+    <span class="wordmark">Sisa Uang</span>
+    <div class="header-actions">
+        <a href="analytics.html" class="nav-link">Analitik</a>
+        <button id="logout-btn" class="logout">Keluar</button>
+    </div>
+</div>
+
+<div id="overspend-warning" class="warning-banner hidden">
+    <p id="overspend-warning-text"></p>
+</div>
 
         <p id="dashboard-status" class="tx-status hidden"></p>
 
