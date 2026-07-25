@@ -7,11 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="toast" class="toast hidden"></div>
+
     <div class="dashboard-page">
         <div class="ledger-header">
             <span class="wordmark">Sisa Uang</span>
             <button id="logout-btn" class="logout">Keluar</button>
         </div>
+
+        <p id="dashboard-status" class="tx-status hidden"></p>
 
         <div class="book">
             <div class="page page-left">
@@ -19,6 +23,7 @@
                     <p class="eyebrow">Aman dibelanjakan hari ini</p>
                     <p id="daily-safe-spend" class="hero-value">-</p>
                     <span id="date-stamp" class="stamp"></span>
+                    <p id="safe-spend-explainer" class="hero-explainer"></p>
                 </div>
 
                 <div class="section">
@@ -40,9 +45,15 @@
                 <div class="section">
                     <p class="section-label">Anggaran bulanan</p>
                     <form id="budget-form" class="budget-row">
-                        <input type="number" id="budget-amount" placeholder="Contoh: 1500000" required>
-                        <button type="submit">Simpan</button>
+                        <input type="text" inputmode="numeric" id="budget-amount" placeholder="Contoh: 1.500.000" required>
+                        <button type="submit" id="budget-submit-btn">Simpan</button>
                     </form>
+                    <div class="progress-wrap">
+                        <div class="progress-track">
+                            <div id="budget-progress-fill" class="progress-fill"></div>
+                        </div>
+                        <p id="budget-progress-label" class="progress-label"></p>
+                    </div>
                 </div>
             </div>
 
@@ -54,18 +65,35 @@
                             <option value="expense">Pengeluaran</option>
                             <option value="income">Pemasukan</option>
                         </select>
-                        <input type="number" id="tx-amount" placeholder="Jumlah" required>
+                        <input type="text" inputmode="numeric" id="tx-amount" placeholder="Jumlah" required>
                         <input type="text" id="tx-description" placeholder="Keterangan" class="full">
                         <select id="tx-category">
                             <option value="">Tanpa kategori</option>
                         </select>
                         <input type="date" id="tx-date" required>
-                        <button type="submit" class="full">+ Catat</button>
+                        <button type="submit" id="tx-submit-btn" class="full">+ Catat</button>
+                        <button type="button" id="tx-cancel-btn" class="full btn-ghost hidden">Batal</button>
                     </form>
                 </div>
 
                 <div class="section">
                     <p class="section-label">Riwayat</p>
+
+                    <div class="filter-bar">
+                        <select id="filter-type">
+                            <option value="">Semua jenis</option>
+                            <option value="expense">Pengeluaran</option>
+                            <option value="income">Pemasukan</option>
+                        </select>
+                        <select id="filter-category">
+                            <option value="">Semua kategori</option>
+                        </select>
+                        <input type="month" id="filter-month">
+                        <input type="text" id="filter-search" placeholder="Cari keterangan...">
+                        <button type="button" id="filter-reset-btn" class="filter-reset">Bersihkan</button>
+                    </div>
+
+                    <p id="tx-status" class="tx-status hidden"></p>
                     <ul id="transaction-list"></ul>
                 </div>
             </div>

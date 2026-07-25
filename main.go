@@ -27,6 +27,8 @@ func main() {
 	mux.HandleFunc("GET /dashboard", middleware.RequireAuth(handlers.Dashboard))
 	mux.HandleFunc("POST /budget", middleware.RequireAuth(handlers.SetBudget))
 	mux.HandleFunc("GET /categories", handlers.ListCategories)
+	mux.HandleFunc("PUT /transactions/{id}", middleware.RequireAuth(handlers.UpdateTransactionHandler))
+	mux.HandleFunc("DELETE /transactions/{id}", middleware.RequireAuth(handlers.DeleteTransactionHandler))
 
 	fileServer := http.FileServer(http.Dir("./web"))
 	mux.Handle("/", fileServer)

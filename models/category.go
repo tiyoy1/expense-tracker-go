@@ -7,6 +7,7 @@ type Category struct {
 	Name string `json:"name"`
 }
 
+//select from db, get all category and order it by Name
 func GetAllCategories(db *sql.DB) ([]Category, error) {
 	rows, err := db.Query("SELECT id, name FROM categories ORDER BY name")
 	if err != nil {
@@ -14,6 +15,7 @@ func GetAllCategories(db *sql.DB) ([]Category, error) {
 	}
 	defer rows.Close()
 
+//looks category's name & id, then append it, return categories
 	var categories []Category
 	for rows.Next() {
 		var c Category

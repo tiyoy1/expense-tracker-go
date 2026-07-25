@@ -8,6 +8,7 @@ type DashboardSummary struct {
 	RemainingBalance float64 `json:"remaining_balance"`
 	Budget           float64 `json:"budget"`
 	DailySafeSpend   float64 `json:"daily_safe_spend"`
+	DaysRemaining    int     `json:"days_remaining"`
 }
 
 func GetMonthlyTotals(db *sql.DB, userID int, yearMonth string) (income, expense float64, err error) {

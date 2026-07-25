@@ -1,0 +1,1 @@
+handler tuh kayak controller the, dia ngatur lalu lintasnya. JSON ini kirim ke mana, data ini dipindahin kemana, terus juga struct datanya seperti apa. Ya polisi lah ya. Berarti dia yang ngatur business logicnya cok

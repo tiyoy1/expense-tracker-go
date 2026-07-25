@@ -2,6 +2,7 @@ package models
 
 import "database/sql"
 
+//insert the budget into db
 func SetBudget(db *sql.DB, userID int, yearMonth string, amount float64) error {
 	_, err := db.Exec(
 		`INSERT INTO budgets (user_id, period, amount) VALUES (?, ?, ?)
@@ -11,6 +12,7 @@ func SetBudget(db *sql.DB, userID int, yearMonth string, amount float64) error {
 	return err
 }
 
+//get budget from db, looking for amount, user, and period
 func GetBudget(db *sql.DB, userID int, yearMonth string) (float64, error) {
 	var amount float64
 	err := db.QueryRow(

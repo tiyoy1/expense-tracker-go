@@ -49,6 +49,7 @@ func Dashboard(w http.ResponseWriter, r *http.Request) {
 		RemainingBalance: income - expense,
 		Budget: budget,
 		DailySafeSpend: dailySafeSpend,
+		DaysRemaining: daysRemaining,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

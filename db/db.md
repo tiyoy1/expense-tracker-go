@@ -1,0 +1,1 @@
+DB.go ini, dia fungsinya buat connect ke databasenya. Jadi dia bakal ambil ENV Config dari config.go buat connect ke db. Disini tuh buat ngatur web app ini mau connect ke mana, port apa, host apa, sampe password usn db nya apa

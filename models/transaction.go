@@ -19,6 +19,7 @@ type TransactionFilters struct {
 	Month		string
 	CategoryID	*int
 	Type		string
+	Search		string
 }
 
 func CreateTransaction(db *sql.DB, userID int, txType string, amount float64, categoryID *int, description, date string) (int, error) {
@@ -60,6 +61,10 @@ func GetTransactionByUser(db *sql.DB, userID int, filters TransactionFilters) ([
 		queryStr += " AND type = ?"
 		args = append(args, filters.Type)
 	}
+	if filters.Search != "" {
+		queryStr += " AND description LIKE ?"
+		args = append(args, "%"+filters.Search+"%")
+	}
 
 	queryStr += " ORDER BY transaction_date DESC, id DESC"
 	
@@ -90,4 +95,36 @@ func GetTransactionByUser(db *sql.DB, userID int, filters TransactionFilters) ([
 	}
 
 	return transactions, nil
+}
+
+func UpdateTransaction(db *sql.DB, id, userID int, txType string, amount float64, categoryID *int, description, date string) (int64, error) {
+	var catID sql.NullInt64
+	if categoryID != nil {
+		catID = sql.NullInt64{Int64: int64(*categoryID), Valid: true}
+	}
+
+	result, err := db.Exec(
+		`UPDATE transactions SET type = ?, amount = ?, category_id = ?, description = ?, transaction_date = ?
+		 WHERE id = ? AND user_id = ?`,
+		txType, amount, catID, description, date, id, userID,
+	)
+	if err != nil {
+		return 0, err
+	}
+	// RowsAffected tells us whether anything actually matched. 0 means either
+	// the ID doesn't exist, or it belongs to someone else — either way, the
+	// caller should treat that as "not found," not a silent success.
+	return result.RowsAffected()
+}
+
+// DeleteTransaction removes a transaction, scoped to the owning user the same way.
+func DeleteTransaction(db *sql.DB, id, userID int) (int64, error) {
+	result, err := db.Exec(
+		"DELETE FROM transactions WHERE id = ? AND user_id = ?",
+		id, userID,
+	)
+	if err != nil {
+		return 0, err
+	}
+	return result.RowsAffected()
 }

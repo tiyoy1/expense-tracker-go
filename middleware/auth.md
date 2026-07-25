@@ -1,0 +1,1 @@
+nah kalo ini, dia ngatur keamanan. Security bos, jadi setiap request yang masuk harus nunjukkin JWT token. Kalo ga ada ya bodo amet ga bisa masuk datanya.
